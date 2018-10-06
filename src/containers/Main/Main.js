@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { queryRepo } from '../../actions/RepoActions';
 import { Search } from '../../components';
+import RepoPie from '../../components/RepoPie/RepoPie';
 
 class Main extends React.Component {
 	handleSearch = query => {
@@ -12,11 +13,17 @@ class Main extends React.Component {
 		return (
 			<div>
 				<Search onSearch={this.handleSearch} />
-				<p>This is the main page</p>
+				<RepoPie repos={this.props.repos} type="repo" />
 			</div>
 		);
 	}
 }
+
+const mapStateToProps = state => {
+	return {
+		repos: state.repos.list
+	};
+};
 
 const mapDispatchToProps = dispatch => {
 	return {
@@ -25,6 +32,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-	null,
+	mapStateToProps,
 	mapDispatchToProps
 )(Main);
