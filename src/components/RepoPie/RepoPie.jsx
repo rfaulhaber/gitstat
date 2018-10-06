@@ -7,7 +7,12 @@ class RepoPie extends React.Component {
 		const data = calculateDataByType(this.props.repos, this.props.type);
 		return (
 			<div style={{ height: 400 }}>
-				<ResponsivePie data={data} margin={{ top: 30, bottom: 30 }} innerRadius={0.75} />;
+				<ResponsivePie
+					data={data}
+					margin={{ top: 30, bottom: 30 }}
+					innerRadius={0.75}
+					onClick={slice => console.log(slice)}
+				/>
 			</div>
 		);
 	}
@@ -26,6 +31,7 @@ function calculateDataByType(repos, type) {
 	}
 }
 
+// TODO add list of repo URLs
 function calculateDataByRepos(repos) {
 	if (Array.isArray(repos)) {
 		const reposByLanguage = repos.reduce((data, repo) => {

@@ -4,7 +4,8 @@ export default function repos(state = {}, action) {
 	switch (action.type) {
 		case QUERY_REPO_START:
 			return Object.assign({}, state, {
-				loading: true
+				loading: true,
+				username: action.username
 			});
 		case QUERY_REPO_SUCCESS:
 			return Object.assign({}, state, {

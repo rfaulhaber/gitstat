@@ -3,19 +3,20 @@ export const QUERY_REPO_START = 'QUERY_REPO_START';
 export const QUERY_REPO_SUCCESS = 'QUERY_REPO_SUCCESS';
 export const QUERY_REPO_FAILURE = 'QUERY_REPO_FAILURE';
 
-export function queryRepo(query) {
+export function queryRepo(username) {
 	return dispatch => {
-		dispatch(queryRepoStart());
+		dispatch(queryRepoStart(username));
 
-		return queryRepoInfo(query)
+		return queryRepoInfo(username)
 			.then(queryInfo => dispatch(queryRepoSuccess(queryInfo)))
-			.catch(err => dispatch(queryRepoFailure(err)));
+			.catch(err => dispatch(queryRepoFailure(err.response.data.message)));
 	};
 }
 
-function queryRepoStart() {
+function queryRepoStart(username) {
 	return {
-		type: QUERY_REPO_START
+		type: QUERY_REPO_START,
+		username
 	};
 }
 
