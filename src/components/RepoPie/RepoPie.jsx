@@ -6,31 +6,31 @@ class RepoPie extends React.Component {
 	render() {
 		const data = calculateDataByType(this.props.repos, this.props.type);
 		return (
-			<div style={{ height: 400 }}>
+			<div style={{ height: 600 }}>
 				<ResponsivePie
 					data={data}
 					margin={{ top: 30, bottom: 30 }}
 					innerRadius={0.75}
-					onClick={slice => console.log(slice)}
-					legends={[
-						{
-							anchor: 'top-left',
-							direction: 'column',
-							itemWidth: 100,
-							itemHeight: 18,
-							itemTextColor: '#999',
-							symbolSize: 18,
-							symbolShape: 'circle',
-							effects: [
-								{
-									on: 'hover',
-									style: {
-										itemTextColor: '#000'
-									}
-								}
-							]
-						}
-					]}
+					colors="pastel2"
+					// legends={[
+					// 	{
+					// 		anchor: 'top-left',
+					// 		direction: 'column',
+					// 		itemWidth: 100,
+					// 		itemHeight: 18,
+					// 		itemTextColor: '#999',
+					// 		symbolSize: 18,
+					// 		symbolShape: 'circle',
+					// 		effects: [
+					// 			{
+					// 				on: 'hover',
+					// 				style: {
+					// 					itemTextColor: '#000'
+					// 				}
+					// 			}
+					// 		]
+					// 	}
+					// ]}
 				/>
 			</div>
 		);
