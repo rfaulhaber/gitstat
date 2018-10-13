@@ -1,0 +1,20 @@
+.Graph {
+	display: flex;
+	flex-direction: column;
+}
+
+.Grid {
+	display: grid;
+}
+
+.GraphView {
+	grid-column: 1 / 2;
+}
+
+.ToolbarView {
+	grid-column: 2 / 2;
+}
+
+.Error {
+	color: red;
+}
