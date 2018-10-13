@@ -4,36 +4,26 @@ import { Object } from 'core-js';
 
 class RepoPie extends React.Component {
 	render() {
-		const data = calculateDataByType(this.props.repos, this.props.type);
-		return (
-			<div style={{ height: 600 }}>
-				<ResponsivePie
-					data={data}
-					margin={{ top: 30, bottom: 30 }}
-					innerRadius={0.75}
-					colors="pastel2"
-					// legends={[
-					// 	{
-					// 		anchor: 'top-left',
-					// 		direction: 'column',
-					// 		itemWidth: 100,
-					// 		itemHeight: 18,
-					// 		itemTextColor: '#999',
-					// 		symbolSize: 18,
-					// 		symbolShape: 'circle',
-					// 		effects: [
-					// 			{
-					// 				on: 'hover',
-					// 				style: {
-					// 					itemTextColor: '#000'
-					// 				}
-					// 			}
-					// 		]
-					// 	}
-					// ]}
-				/>
-			</div>
-		);
+		let render;
+
+		if (this.props.repos) {
+			const data = calculateDataByType(this.props.repos, this.props.type);
+			render = <div style={{ height: 600 }}>
+				<h2>{this.props.type === 'repo' ? 'Languages by Repo' : 'Languages by Line'}</h2>
+				<ResponsivePie 
+					data={data} 
+					margin={{ top: 30, bottom: 30 }} 
+					innerRadius={0.75} 
+					colors="pastel2" 
+					slicesLabelsSkipAngle={5} 
+					radialLabelsSkipAngle={5}
+					/>
+            </div>;
+		} else {
+			render = <div/>
+		}
+
+		return render;
 	}
 }
 
